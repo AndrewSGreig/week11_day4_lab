@@ -5,12 +5,14 @@ import static org.junit.Assert.assertEquals;
 
 public class DeckTest {
     private Deck deck;
+    private SuitType suitType;
+    private RankType rankType;
 
     Card card;
 
     @Before
     public void before(){
-        deck = new Deck();
+        deck = new Deck(suitType, rankType);
         card = new Card(SuitType.HEARTS, RankType.QUEEN);
     }
 
@@ -27,13 +29,7 @@ public class DeckTest {
 
     @Test
     public void testPopulateDeck() {
-        SuitType[] suits= SuitType.values();
-        RankType[] ranks = RankType.values();
-        System.out.println(suits.toString());
-        System.out.println(ranks);
-        for (int i = 0; i > suits.length; i ++ ){
-            System.out.println(suits.toString());
-
-        }
+    deck.populateDeck();
+    assertEquals(52, deck.cardCount());
     }
 }
